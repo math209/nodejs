@@ -1,0 +1,23 @@
+{
+  "port": 3000,
+  "mongoose": {
+    "uri": "mongodb://localhost/game_ttt",
+    "options":{
+      "server":{
+        "socketOptions":{
+          "keepAlive":1
+        }
+      }
+    }
+  },
+  "session":{
+    "secret": "keySecret",
+    "key": "sid",
+    "cookie":{
+      "path":"/",
+      "httpOnly": true,
+      "maxAge": null
+    }
+  },
+  "timeout": 300000
+}

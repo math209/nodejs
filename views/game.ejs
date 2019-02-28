@@ -1,0 +1,175 @@
+<% layout('/layout/page') -%>
+
+<div class="container-fluid p-0">
+    <div class="container-fluid pl-4 pr-4" id="div_part1">
+        <div class="row ml-0 mr-0">
+            <div class="col-2 pl-0 text-left"><span id="div_owner" class="default"><span id="user1_name"></span>&nbsp;&nbsp;<img style="width: 100" src="/images/cross.png"></span>&nbsp;&nbsp;<span id="user1_timer"></span></div>
+            <div class="col-8"></div>
+            <div class="col-2 pr-0 text-right"><span id="user2_timer"></span>&nbsp;&nbsp;<span id="div_opponent" class="default"><img src="/images/zero.png">&nbsp;&nbsp;<span id="user2_name"></span></span></div>
+        </div>
+        <br>
+        <div class="text-center" id="div_winner"></div>
+        <br>
+        <div class="container" id="container" style="width: 450px">
+                <div class="row">
+                    <div class="col-4 p-0 border-warning border-right border-bottom" id="div_11"></div>
+                    <div class="col-4 p-0 border-warning border border-top-0" id="div_12"></div>
+                    <div class="col-4 p-0 border-warning border-left border-bottom" id="div_13"></div>
+                </div>
+                <div class="row">
+                    <div class="col-4 p-0 border-warning border border-left-0" id="div_21"></div>
+                    <div class="col-4 p-0 border-warning border" id="div_22"></div>
+                    <div class="col-4 p-0 border-warning border border-right-0" id="div_23"></div>
+                </div>
+                <div class="row">
+                    <div class="col-4 p-0 border-warning border-top border-right" id="div_31"></div>
+                    <div class="col-4 p-0 border-warning border border-bottom-0" id="div_32"></div>
+                    <div class="col-4 p-0 border-warning border-left border-top" id="div_33"></div>
+                </div>
+        </div>
+        <br>
+        <br>
+        <div class="container text-center"><div id="div_time"></div></div>
+        <div id="div_block"></div>
+    </div>
+    <br>
+    <div class="container text-center" id="div_part2">
+        <div id="div_buttom">
+            <form id="form-action">
+                <input type="hidden" name="accessToken" id="input-accessToken" value="<%=accessToken%>" >
+                <input type="hidden" name="gameToken" id="input-gameToken" value="<%=gameToken%>" >
+                <button class="btn btn-info"></button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    const gamer = "<%=gamer%>";
+    let query_g;
+
+    $('#form-action').on('submit', () => {
+        const form = $('#form-action');
+        $.ajax({
+            url: "/game",
+            method: "POST",
+            data: form.serialize(),
+            success: (data) =>  window.location.href = '/game_main'
+        });
+        return false;
+    });
+    $(document).ready(() => begin());
+    const begin = () => {
+        getaction();
+        //setTimeout(function(){getaction();}, 5000);
+        query_g = setInterval('getaction()',2000);
+    }
+    const getaction = () => {
+        $.ajax({
+            url: "/game_action",
+            method: "GET",
+            dataType: "json",
+            data: {"accessToken": "<%=accessToken%>", "gameToken": "<%=gameToken%>"},
+            success: (data) => container(data),
+            error: (data) => window.location.href = '/game_main'
+        });
+    };
+    const postaction = (data) => {
+        clearInterval(query_g);
+        $.ajax({
+            url: "/game_action",
+            type: "POST",
+            dataType: "json",
+            data: {"accessToken": "<%=accessToken%>", "gameToken": "<%=gameToken%>", "row": data[0], "col": data[1]},
+            success: (data) => begin(),
+            error: (data) => begin()
+
+        });
+    };
+    const container = (list) => {
+        clear();
+        switch(list.state){
+            case 0:{
+                $('#user1_name').html("<%=user.get('username')%>");
+                $('#div_opponent').addClass("invisible");
+                board(list, 0);
+                $('button').html(`CLOSE`);
+
+            } break;
+            case 1:{
+                $('#user1_name').html(list.owner);
+                $('#user2_name').html(list.opponent);
+                if(list.turn=="owner"){
+                    $('#div_owner').addClass("border-bottom border-dark");
+                    $('#user1_timer').html(time(list.gameState));
+                } else {
+                    $('#div_opponent').addClass("border-bottom border-dark");
+                    $('#user2_timer').html(time(list.gameState));
+                }
+                board(list, 1)
+                $('#div_time').html(`<h4>${time(list.gameDuration)}</h4>`);
+                if(gamer=='viewer'){
+                    //$('#div_block').addClass('disabled');
+                    $('#div_block').addClass('div_block');
+                    $('button').html(`BACK`);
+                }
+                else{
+                    $('#div_block').removeClass('block_div');
+                    $('button').html(`SURRENDER`);
+                }
+            } break;
+            case 2:{
+                clearInterval(query_g);
+                $('#user1_name').html(list.owner);
+                $('#user2_name').html(list.opponent);
+                const winner = (list.gameResult=="owner"?list.owner:list.gameResult=="opponent"?list.opponent:'Ничья');
+                $('#div_winner').html(`<span>Победитель партии: ${winner}</span>`);
+                board(list, 2);
+                $('#div_time').html(`<h4>${time(list.gameDuration)}</h4>`);
+                $('button').html(`BACK`);
+            } break;
+        }
+    };
+    const clear = () => {
+        $('#div_time').html('');
+        $('#user1_name').html('');
+        $('#user2_name').html('');
+        $('#user1_timer').html('');
+        $('#user2_timer').html('');
+        $('#div_owner').removeClass("border-bottom border-dark");
+        $('#div_opponent').removeClass("border-bottom border-dark invisible");
+        $('#div_time').html('');
+    };
+    const board = (data, type) => {
+        let tmp;
+        for (let i = 0; i < data.field.length; i++) {
+            tmp = data.field[i];
+            for (let j = 0; j < tmp.length; j++) {
+                $(`#div_${i + 1}${j + 1}`).removeClass('div_n_n div_n div_o div_x');
+                $(`#div_${i + 1}${j + 1}`).off();
+                if(tmp[j]=='n' && (type==0 || type==2 || gamer!=data.turn)) $(`#div_${i + 1}${j + 1}`).addClass(`div_n_${tmp[j]}`);
+                else {
+                    $(`#div_${i + 1}${j + 1}`).addClass(`div_${tmp[j]}`);
+                    if(tmp[j]=='n') $(`#div_${i + 1}${j + 1}`).on('click', function () {
+                        const str = this.id.split('_')[1];
+                        postaction(str);
+                    });
+                }
+            }
+        }
+    };
+    const time = (millisec=null) => {
+        let seconds = (millisec / 1000).toFixed(0);
+        let minutes = Math.floor(seconds / 60);
+        let hours = "";
+        if (minutes > 59) {
+            hours = Math.floor(minutes / 60);
+            hours = (hours >= 10) ? hours : "0" + hours;
+            minutes = minutes - (hours * 60);
+            minutes = (minutes >= 10) ? minutes : "0" + minutes;
+        }
+        seconds = Math.floor(seconds % 60);
+        seconds = (seconds >= 10) ? seconds : "0" + seconds;
+        if (hours != "") return hours + ":" + minutes + ":" + seconds;
+        return minutes + ":" + seconds;
+    }
+</script>

@@ -1,0 +1,76 @@
+2018-10-07 14:26:46 [routes/game_action.js]: Ошибка запроса
+2018-10-07 14:27:47 [routes/game_action.js]: Ошибка запроса
+2018-10-07 14:32:37 [routes/game_action.js]: Ошибка запроса
+2018-10-07 14:36:31 [routes/game_action.js]: Ошибка запроса
+2018-10-07 14:37:19 [routes/game_action.js]: Ошибка запроса
+2018-10-07 14:38:05 [routes/game_action.js]: Ошибка запроса
+2018-10-07 14:39:31 [routes/game_action.js]: Ошибка запроса
+2018-10-07 14:41:08 [routes/game_action.js]: Ошибка запроса
+2018-10-07 14:42:21 [routes/game_action.js]: Ошибка запроса
+2018-10-07 14:43:25 [routes/game_action.js]: Ошибка запроса
+2018-10-07 14:44:50 [routes/game_action.js]: Ошибка запроса
+2018-10-07 14:44:55 [routes/game_action.js]: Ошибка запроса
+2018-10-07 14:44:59 [routes/game_action.js]: Ошибка запроса
+2018-10-07 14:46:42 [routes/game_action.js]: Ошибка запроса
+2018-10-07 14:51:11 [routes/game_action.js]: Ошибка запроса
+2018-10-07 15:01:09 [routes/game_action.js]: Ошибка запроса
+2018-10-07 15:01:11 [routes/game_action.js]: Ошибка запроса
+2018-10-07 15:12:01 [routes/game_action.js]: Ошибка запроса
+2018-10-07 15:12:27 [routes/game_action.js]: Ошибка запроса
+2018-10-07 15:25:57 [routes/game_action.js]: Ошибка запроса
+2018-10-07 15:41:33 [routes/game_action.js]: Ошибка запроса
+2018-10-07 15:41:34 [routes/game_action.js]: Ошибка запроса
+2018-10-07 15:59:37 [routes/game_action.js]: Ошибка запроса
+2018-10-07 16:00:23 [routes/game_action.js]: Ошибка запроса
+2018-10-07 16:00:51 [routes/game_action.js]: Ошибка запроса
+2018-10-07 16:02:02 [routes/game_action.js]: Ошибка запроса!
+2018-10-07 16:05:01 [routes/game_action.js]: referer=a8fmjec8j7g8&gameToken=&row=1&col=3&accessToken=2k87nf7hh8af
+2018-10-07 16:10:38 [routes/game_action.js]: Ошибка запроса
+2018-10-07 16:11:22 [routes/game_action.js]: accessToken=fasdfads&game.ownerToken=2k87nf7hh8af&game.opponentToken=4kg84kkndhk6
+2018-10-07 16:47:33 [routes/game_action.js]: accessToken=fasdfads&game.ownerToken=2k87nf7hh8af&game.opponentToken=4kg84kkndhk6
+2018-10-07 17:01:21 [routes/game_action.js]: state=1&who_n=opponent&turn_count=owner&check_data=false
+2018-10-07 17:09:19 [routes/game_action.js]: referer=gsfdg&gameToken=a8fmjec8j7g8
+2018-10-07 17:09:21 [routes/game_action.js]: referer=gsfdg&gameToken=a8fmjec8j7g8
+2018-10-07 17:09:23 [routes/game_action.js]: referer=gsfdg&gameToken=a8fmjec8j7g8
+2018-10-07 17:09:25 [routes/game_action.js]: referer=gsfdg&gameToken=a8fmjec8j7g8
+2018-10-07 17:09:27 [routes/game_action.js]: referer=gsfdg&gameToken=a8fmjec8j7g8
+2018-10-07 17:09:29 [routes/game_action.js]: referer=gsfdg&gameToken=a8fmjec8j7g8
+2018-10-07 17:09:31 [routes/game_action.js]: referer=gsfdg&gameToken=a8fmjec8j7g8
+2018-10-07 17:09:33 [routes/game_action.js]: referer=gsfdg&gameToken=a8fmjec8j7g8
+2018-10-07 17:09:35 [routes/game_action.js]: referer=gsfdg&gameToken=a8fmjec8j7g8
+2018-10-07 17:09:37 [routes/game_action.js]: referer=gsfdg&gameToken=a8fmjec8j7g8
+2018-10-07 17:09:39 [routes/game_action.js]: referer=gsfdg&gameToken=a8fmjec8j7g8
+2018-10-07 17:09:41 [routes/game_action.js]: referer=gsfdg&gameToken=a8fmjec8j7g8
+2018-10-07 17:14:05 [routes/game_action.js]: referer=sgg&gameToken=a8fmjec8j7g8
+2018-10-07 17:14:07 [routes/game_action.js]: referer=sgg&gameToken=a8fmjec8j7g8
+2018-10-07 17:14:09 [routes/game_action.js]: referer=sgg&gameToken=a8fmjec8j7g8
+2018-10-07 17:14:11 [routes/game_action.js]: referer=sgg&gameToken=a8fmjec8j7g8
+2018-10-07 17:14:13 [routes/game_action.js]: referer=sgg&gameToken=a8fmjec8j7g8
+2018-10-07 17:14:15 [routes/game_action.js]: referer=sgg&gameToken=a8fmjec8j7g8
+2018-10-07 17:14:17 [routes/game_action.js]: referer=sgg&gameToken=a8fmjec8j7g8
+2018-10-07 17:14:19 [routes/game_action.js]: referer=sgg&gameToken=a8fmjec8j7g8
+2018-10-07 17:14:21 [routes/game_action.js]: referer=sgg&gameToken=a8fmjec8j7g8
+2018-10-07 17:14:23 [routes/game_action.js]: referer=sgg&gameToken=a8fmjec8j7g8
+2018-10-07 17:14:25 [routes/game_action.js]: referer=sgg&gameToken=a8fmjec8j7g8
+2018-10-07 17:14:27 [routes/game_action.js]: referer=sgg&gameToken=a8fmjec8j7g8
+2018-10-07 17:14:29 [routes/game_action.js]: referer=sgg&gameToken=a8fmjec8j7g8
+2018-10-07 17:14:31 [routes/game_action.js]: referer=sgg&gameToken=a8fmjec8j7g8
+2018-10-07 17:14:33 [routes/game_action.js]: referer=sgg&gameToken=a8fmjec8j7g8
+2018-10-07 17:14:35 [routes/game_action.js]: referer=sgg&gameToken=a8fmjec8j7g8
+2018-10-07 17:17:35 [routes/game_action.js]: referer=gsf&gameToken=a8fmjec8j7g8&row=2&col=2&accessToken=2k87nf7hh8af
+2018-10-07 17:18:23 [routes/game_action.js]: referer=gsf&gameToken=a8fmjec8j7g8&row=2&col=2&accessToken=2k87nf7hh8af
+2018-10-07 17:27:34 [routes/game.js]: Не существет такая партия
+2018-10-07 17:27:37 [routes/game.js]: Не существет такая партия
+2018-10-07 17:34:11 [routes/game.js]: Не существет такая партия
+2018-10-07 17:35:09 [routes/game.js]: referer=http://localhost:3000/,jnici9j83gnf&gameToken=
+2018-10-07 17:36:00 [routes/game.js]: referer=jnici9j83gnf&gameToken=
+2018-10-07 17:36:25 [routes/game.js]: referer=http://localhost:3000/,jnici9j83gnf&gameToken=
+2018-10-07 17:37:13 [routes/game.js]: Не существет такая партия
+2018-10-08 13:56:57 [routes/game_action.js]: Не существет такая партия
+2018-10-08 13:57:11 [routes/game_action.js]: Не существет такая партия
+2018-10-08 13:57:13 [routes/game_action.js]: Не существет такая партия
+2018-10-08 13:57:15 [routes/game_action.js]: Не существет такая партия
+2018-10-08 13:57:17 [routes/game_action.js]: Не существет такая партия
+2018-10-08 13:57:19 [routes/game_action.js]: Не существет такая партия
+2018-10-08 13:57:21 [routes/game_action.js]: Не существет такая партия
+2018-10-08 13:57:23 [routes/game_action.js]: Не существет такая партия

@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/" class="navbar-brand text-light">Tic Tac Toe</a>
+        </div>
+
+       <div class="container-fluid">
+            <ul class="navbar-nav navbar-left">
+                <% if(user){ %>
+                <li><a href="/game_main" class="nav-link text-light">Игра</a></li>
+                <% } %>
+            </ul>
+       </div>
+
+       <div>
+            <ul class="navbar-nav navbar-right">
+                <% if(user){ %>
+                <li><form method="post" action="/logout"><a id='logout' class="nav-link text-light" href="">Выйти</a></form></li>
+                <% } else { %>
+                <li><a class="nav-link text-light" href="/login">Войти</a></li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<script>
+    $('#logout').on('click',function(){
+        $(this).parent().submit();
+        return false;
+    });
+</script>

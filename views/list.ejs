@@ -1,0 +1,84 @@
+<% layout('/layout/page') -%>
+
+<div class="container-fluid pl-4 pr-4">
+    <div class="row ml-0 mr-0">
+        <div class="col-8 pl-0 pr-0">
+            <%=user.get('username')%>
+            <hr>
+        </div>
+        <div class="col-4 text-right"><form name="form-new" id="form-new">
+                <input type="hidden" id="input-userName" name="userName" value="<%=user.get('username')%>">
+                <input type="hidden" id="input-size" name="size" value="3">
+                <button id="new_party" class="btn btn-primary btn-sm">Новая партия</button>
+            </form></div>
+    </div>
+    <div id="container"></div>
+</div>
+<script>
+    $(document).ready(function(){
+        getgame();
+        //setTimeout(function(){getgame();}, 5000);
+        setInterval('getgame()',2000);
+    });
+    $('#form-new').on('submit', () => {
+        const form = $('#form-new');
+        $.ajax({
+            url: "/game_list",
+            method: "POST",
+            data: form.serialize(),
+            success: (data) => window.location.href = `/game?id=${data}`
+        });
+        return false;
+    });
+    const getgame = () => {
+        $.ajax({
+            url: "/game_list",
+            method: "GET",
+            dataType: "json",
+            statusCode: {
+                200: (data) => container(data)
+            }
+        });
+    };
+    const container = (list) => {
+        let str='';
+        for(let i=0;i<list.length;i++){
+            if(i%4==0) str+='<div class="row ml-0 mr-0">';
+            str+=`
+    <div class="col-3 p-0">
+        <div id="game_${list[i].gameToken}" class="m-1 p-2 ${bg(list[i])} pointer">
+            ${div(list[i])}
+            <br><p class="text-right mb-0"><small>${(list[i].gameDuration?time(list[i].gameDuration):"&nbsp;")}</small></p>
+        </div>
+    </div>
+                `;
+            if(i%4==3||i==list.length-1) str+='</div>';
+        }
+        $('#container').html(str);
+        for(let i=0;i<list.length;i++) $(`#game_${list[i].gameToken}`).on('click', ()=> window.location.href = `/game?id=${list[i].gameToken}`);
+    };
+    const bg = (game) => game.state==0?"bg-info":game.state==1?"bg-light":game.gameResult=="draw"?"bg-warning":"bg-success";
+    const div = (game) => {
+        const owner = `<span class="text-warning">${game.owner}&nbsp;${icons.ok}</span>`;
+        const opponent =`<span class="text-warning">${game.opponent}&nbsp;${icons.ok}</span>`;
+
+        if(game.gameResult=="owner") return `<p>${owner}</p><hr><p>${(game.opponent?game.opponent:"&nbsp;")}</p>`;
+        if(game.gameResult=="opponent") return `<p>${game.owner}</p><hr><p>${(game.opponent?opponent:"&nbsp;")}</p>`
+        return `<p>${game.owner}</p><hr><p>${(game.opponent?game.opponent:"&nbsp;")}</p>`
+    }
+    const time = (millisec=null) => {
+        let seconds = (millisec / 1000).toFixed(0);
+        let minutes = Math.floor(seconds / 60);
+        let hours = "";
+        if (minutes > 59) {
+            hours = Math.floor(minutes / 60);
+            hours = (hours >= 10) ? hours : "0" + hours;
+            minutes = minutes - (hours * 60);
+            minutes = (minutes >= 10) ? minutes : "0" + minutes;
+        }
+        seconds = Math.floor(seconds % 60);
+        seconds = (seconds >= 10) ? seconds : "0" + seconds;
+        if (hours != "") return hours + ":" + minutes + ":" + seconds;
+        return minutes + ":" + seconds;
+    }
+</script>

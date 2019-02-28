@@ -1,0 +1,29 @@
+{
+  "name": "game",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.18.2",
+    "bower": "^1.8.4",
+    "connect-mongo": "^2.0.1",
+    "cookie-parser": "~1.4.3",
+    "crypto": "^1.0.1",
+    "debug": "~2.6.9",
+    "ejs": "~2.5.7",
+    "ejs-locals": "^1.0.2",
+    "express": "~4.15.5",
+    "express-session": "^1.15.6",
+    "glyphicons": "^0.2.0",
+    "glyphicons-css": "^1.1.0",
+    "mongo-connect": "0.0.6",
+    "mongodb": "^3.1.6",
+    "mongoose": "^5.2.15",
+    "morgan": "~1.9.0",
+    "nconf": "^0.10.0",
+    "serve-favicon": "~2.4.5",
+    "winston": "^3.1.0"
+  }
+}
